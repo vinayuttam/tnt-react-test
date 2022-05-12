@@ -1,10 +1,8 @@
 version: 0.2
 phases:
   install:
-    runtime-versions:
-      nodejs: 14
     commands:
-      - n 16
+      - n 16.14
   pre_build:
     commands:
       - echo Running AWS Code Build
