@@ -1,8 +1,10 @@
 version: 0.2
 phases:
   install:
+    runtime-versions:
+      nodejs: 14
     commands:
-      - n 16.14
+      - n 16
   pre_build:
     commands:
       - echo Running AWS Code Build
@@ -12,10 +14,12 @@ phases:
       - echo Build started on `date`
       - echo Building the Docker image...
       - yarn install
-      - API_URL=$API_URL yarn run build
+      - REACT_APP_API_URL=$API_URL yarn run build
   post_build:
     commands:
       - echo build completed on `date`
 artifacts:
   files:
-    - build/**
+    - '**/*'
+  base-directory: 'build'
+
