@@ -6,13 +6,13 @@ phases:
   pre_build:
     commands:
       - echo Running AWS Code Build
-      - export TAG=v1.0.0-dev
+      - printf 'REACT_APP_API_URL=%s' $REACT_APP_API_URL > .env
   build:
     commands:
-      - echo Build started on `date`
+      - echo Build started on `date`s
       - echo Building the Docker image...
       - yarn install
-      - REACT_APP_API_URL=$API_URL yarn run build
+      - yarn run build
   post_build:
     commands:
       - echo build completed on `date`
